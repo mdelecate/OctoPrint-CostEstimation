@@ -219,7 +219,7 @@ $(function() {
             if (element.length) {
                 var name = gettext("Cost");
                 var text = gettext("Estimated print cost based on required quantity of filament and print time");
-                element.before("<div id='costestimation_string' data-bind='visible: showEstimatedCost()'><span title='" + text + "'>" + name + "</span>: <span title='" + tooltipCostBreakdown + "'><strong data-bind='text: estimatedCostString'></strong></span></div>");
+                element.before("<div id='costestimation_string' data-bind='visible: showEstimatedCost()'><span title='" + text + "'>" + name + "</span>: <span data-bind='attr: {title: tooltipCostBreakdown }'><strong data-bind='text: estimatedCostString'></strong></span></div>");
             }
         };
     }
@@ -232,3 +232,4 @@ $(function() {
         elements: ["#costestimation_string", "#settings_plugin_costestimation"]
     });
 });
+

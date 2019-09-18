@@ -210,7 +210,8 @@ $(function() {
             var printerCost = (depreciationPerHour + maintenancePerHour) * estimatedPrintTime;
 
             // assembling string
-            return "Filament: "+ filamentCost.toFixed(2) + "/ Electricity: " + electricityCost.toFixed(2) + "/ Printer: "+ printerCost.toFixed(2);
+            var currencySymbol = pluginSettings.currency();
+            return "Filament: " + currencySymbol + filamentCost.toFixed(2) + " / Electricity: " + currencySymbol + electricityCost.toFixed(2) + " / Printer: "+ currencySymbol + printerCost.toFixed(2);
         });
         
         

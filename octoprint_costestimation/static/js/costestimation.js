@@ -149,8 +149,7 @@ $(function() {
             var printerCost = (depreciationPerHour + maintenancePerHour) * estimatedPrintTime;
 
             // assembling string
-            var tooltipCostBreakdown = "Filament: "+ filamentCost.toFixed(2) + "Electricity: " + electricityCost.toFixed(2) + "Printer: "+ printerCost.toFixed(2);;
-            return tooltipCostBreakdown;
+            return "Filament: "+ filamentCost.toFixed(2) + "Electricity: " + electricityCost.toFixed(2) + "Printer: "+ printerCost.toFixed(2);
         });
         
         

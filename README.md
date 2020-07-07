@@ -1,6 +1,7 @@
 ## Fork Notes: 
 Forked original in order to add a tooltip over the cost estimate. The tooltip breaks down the individual cost components and shows the cost separately for Filament, Electricity, Printer. 
 
+-----------------
 
 # OctoPrint-CostEstimation
 

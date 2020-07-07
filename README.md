@@ -1,3 +1,7 @@
+## Fork Notes: 
+Forked original in order to add a tooltip over the cost estimate. The tooltip breaks down the individual cost components and shows the cost separately for Filament, Electricity, Printer. 
+
+
 # OctoPrint-CostEstimation
 
 This OctoPrint plugin displays the estimated print cost for the loaded model. The print cost includes the price for the used filament the maintenance and operating cost for the printer as well as the depreciation of the printer.

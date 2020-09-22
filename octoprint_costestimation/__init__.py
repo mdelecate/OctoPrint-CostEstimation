@@ -78,18 +78,18 @@ class CostEstimationPlugin(octoprint.plugin.SettingsPlugin,
 
                 # version check: github repository
                 type="github_release",
-                user="malnvenshorn",
+                user="OllisGit",
                 repo="OctoPrint-CostEstimation",
                 current=self._plugin_version,
 
                 # update method: pip
-                pip="https://github.com/malnvenshorn/OctoPrint-CostEstimation/archive/{target_version}.zip"
+                pip="https://github.com/OllisGit/OctoPrint-CostEstimation/releases/latest/download/master.zip"
             )
         )
 
 
 __plugin_name__ = "Cost Estimation"
-
+__plugin_pythoncompat__ = ">=2.7,<4"
 
 def __plugin_load__():
     global __plugin_implementation__

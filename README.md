@@ -38,4 +38,4 @@ This OctoPrint plugin displays the estimated print cost for the loaded model. Th
 Install via the bundled [Plugin Manager](https://github.com/foosel/OctoPrint/wiki/Plugin:-Plugin-Manager)
 or manually using this URL:
 
-    https://github.com/OllisGit/OctoPrint-FilamentManager/releases/latest/download/master.zip
+    https://github.com/OllisGit/OctoPrint-CostEstimation/releases/latest/download/master.zip

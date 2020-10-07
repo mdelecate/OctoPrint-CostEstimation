@@ -25,14 +25,16 @@ $(function() {
         })
 
         self.estimatedCostString = ko.pureComputed(function() {
-            if (!self.showEstimatedCost()) return "-";
-            if (self.printerState.filename() === undefined) return "-";
-            if (self.printerState.filament().length == 0) return "-";
+            if (!self.showEstimatedCost()) return "user not logged in";
+            if (self.printerState.filename() === undefined) return "no filename";
+            if (self.printerState.filament().length == 0) return "no filament from meta";
 
             var pluginSettings = self.settings.settings.plugins.costestimation;
             var jobFilament =  self.printerState.filament();
-            var spoolData = null;
 
+            var withDefaultSpoolValues = false;
+            var noSpoolValues = false;
+            var spoolData = null;
             if (self.filamentManager !== null && pluginSettings.useFilamentManager()) {
                 spoolData = self.filamentManager.selectedSpools();
             }
@@ -43,7 +45,10 @@ $(function() {
                 var result = /(\d+)/.exec(jobFilament[i].name()); // extract tool id from name
                 var tool = result === null ? 0 : result[1];
 
-                if (spoolData !== null && spoolData[tool] === undefined) continue;  // skip tools with no selected spool
+                if (spoolData !== null && spoolData[tool] === undefined) {
+                    noSpoolValues = true;
+                    continue;  // skip tools with no selected spool
+                }
 
                 var costOfFilament, weightOfFilament, densityOfFilament, diameterOfFilament;
 
@@ -53,6 +58,7 @@ $(function() {
                     densityOfFilament = spoolData[tool].profile.density;
                     diameterOfFilament = spoolData[tool].profile.diameter;
                 } else {
+                    withDefaultSpoolValues = true;
                     costOfFilament = parseFloat(pluginSettings.costOfFilament());
                     weightOfFilament = parseFloat(pluginSettings.weightOfFilament());
                     densityOfFilament = parseFloat(pluginSettings.densityOfFilament());
@@ -84,7 +90,14 @@ $(function() {
             var estimatedCost = filamentCost + electricityCost + printerCost;
             var currencySymbol = pluginSettings.currency();
             var currencyFormat = pluginSettings.currencyFormat();
-            return currencyFormat.replace("%v", estimatedCost.toFixed(2)).replace("%s", currencySymbol);
+            var costResult = currencyFormat.replace("%v", estimatedCost.toFixed(2)).replace("%s", currencySymbol);
+            if (withDefaultSpoolValues == true){
+                costResult += " (with default Spool-Values)";
+            }
+            if (noSpoolValues == true){
+                costResult += " (no Spool-Values)";
+            }
+            return costResult;
         });
 
         self.calculateVolume = function(length, diameter) {

@@ -42,4 +42,4 @@ This OctoPrint plugin displays the estimated print cost for the loaded model. Th
 
 Install manually using this URL:
 
-    https://github.com/mdelecate/OctoPrint-CostEstimation/releases/latest/download/master.zip
+    https://github.com/mdelecate/OctoPrint-CostEstimation/archive/master.zip
